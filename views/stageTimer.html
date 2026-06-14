@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<title>Dynamic Floor - DJ Planner</title>
+
+<!-- ANTI CACHE -->
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+
+<link rel="stylesheet" href="style_timer.css">
+
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- PANEL PRINCIPAL -->
+
+     <div class="brand-header" style="text-align: right; padding: 18px 0;">
+        <img src="Brand.svg" alt="Dynamic Floor Logo" style="max-height: 90px;">
+    </div>
+
+    <header class="main-display">
+
+        <!-- HORA ACTUAL -->
+
+        <div class="brand-focus">
+            <img src="Brand.svg" alt="Dynamic Floor Logo">
+        </div>
+
+        <div
+            id="live-clock"
+            class="live-clock"
+        >
+            00:00:00
+        </div>
+
+        <!-- ESTADO -->
+
+        <div
+            id="status-badge"
+            class="current-label"
+        >
+            EN ESPERA
+        </div>
+
+        <!-- DJ ACTUAL -->
+
+        <div
+            id="current-segment-title"
+        >
+            AGREGAR DJ O SELECTOR
+        </div>
+
+        <!-- SIGUIENTE -->
+
+        <div
+            id="current-segment-host"
+        >
+            A continuación: EN ESPERA
+        </div>
+
+        <!-- TEMPORIZADOR -->
+
+        <div
+            id="main-clock"
+            class="big-timer"
+        >
+            00:00
+        </div>
+
+        <!-- PROGRESO -->
+
+        <div class="progress-container">
+
+            <div
+                id="progress-bar"
+                class="progress-bar"
+            ></div>
+
+        </div>
+
+        <!-- HORARIO -->
+
+        <!-- <div
+            id="current-schedule"
+            class="schedule-display"
+        >
+            Inicio: --:-- · Fin: --:--
+        </div> -->
+
+        <!-- CONTROLES -->
+
+        <div class="controls-row">
+
+        <button
+            title="Iniciar"
+            onclick="handlePlay()"
+        >
+           <span class="material-icons">play_arrow</span>
+        </button>
+
+        <button
+            title="Pausar"
+            onclick="handleStop()"
+        >
+            <span class="material-icons">pause</span>
+        </button>
+
+        <button
+            title="Siguiente"
+            onclick="handleNext()"
+        >
+          <span class="material-icons">skip_next</span>
+        </button>
+
+        <button
+            title="Reiniciar todo"
+            onclick="handleReset()"
+        >
+            <span class="material-icons">replay</span>
+        </button>
+
+        <button
+            class="focus-btn"
+            title="Pantalla completa"
+            onclick="toggleFocusMode()"
+        >
+           <span class="material-icons">center_focus_strong</span>
+        </button>
+
+  
+        </div>
+
+    </header>
+
+    <!-- COLA -->
+
+    <section class="queue-section">
+
+        <div class="section-title">
+
+            Selectores y Djs:
+
+        </div>
+
+        <div
+            id="timers-container"
+            class="timers-list"
+        >
+
+            <!--
+            Se genera desde JS
+            -->
+
+        </div>
+
+    </section>
+
+    <!-- BOTON AGREGAR -->
+
+    <footer class="list-actions">
+
+        <button
+            id="add-participant-btn"
+            onclick="openModal('create')"
+        >
+            <span class="material-icons">add</span>
+        </button>
+
+    </footer>
+
+    <!-- <footer class="list-actions">
+
+        <button
+            onclick="openModal('create')"
+        >
+            + Agregar Participante
+        </button>
+
+    </footer> -->
+
+</div>
+
+<!-- MODAL -->
+
+<div
+    id="edit-modal"
+    class="modal"
+>
+
+    <div class="modal-content">
+
+        <h2
+            id="modal-title-text"
+        >
+            Agregar DJ o Selector
+        </h2>
+
+        <form
+            id="edit-form"
+        >
+
+            <!-- NOMBRE -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Nombre
+
+                </label>
+
+                <input
+                    type="text"
+                    id="participant-name"
+                    placeholder="Solomun"
+                    required
+                >
+
+            </div>
+
+            <!-- DURACION -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Duración (minutos)
+
+                </label>
+
+                <input
+                    type="number"
+                    id="participant-duration"
+                    min="1"
+                    value="30"
+                    required
+                >
+
+            </div>
+
+            <!-- COLOR -->
+
+            <div class="color-picker">
+
+                <label>
+
+                    Color de etiqueta
+
+                </label>
+
+                <div
+                    id="color-options"
+                >
+
+                    <!--
+                    Generado por JS
+                    -->
+
+                </div>
+
+            </div>
+
+            <!-- NOTAS -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Notas
+
+                </label>
+
+                <textarea
+                    id="participant-notes"
+                    placeholder="Observaciones..."
+                ></textarea>
+
+            </div>
+
+            <!-- BOTONES -->
+
+            <div
+                class="modal-buttons"
+            >
+
+                <button
+                    type="button"
+                    id="duplicate-btn"
+                    class="btn-alt edit-only"
+                >
+                    Duplicar
+                </button>
+
+                <button
+                    type="button"
+                    id="delete-btn"
+                    class="btn-danger edit-only"
+                    onclick="deleteParticipant()"
+                >
+                    Eliminar
+                </button>
+
+                <button
+                    type="button"
+                    onclick="closeModal()"
+                    class="btn-alt"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-save"
+                >
+                    Guardar
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

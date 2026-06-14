@@ -1,0 +1,370 @@
+:root {
+    --bg: #070b14;
+    --panel: #0f172a;
+    --card: #111827;
+    --card-hover: #172036;
+    --border: #22304f;
+    --text: #f8fafc;
+    --text-soft: #94a3b8;
+    --accent: #8b5cf6;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --radius: 20px;
+    --shadow: 0 12px 40px rgba(0,0,0,.45);
+    --transition: .18s ease;
+}
+
+/* =========================
+    RESET & BASE
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    background: 
+        radial-gradient(circle at top left, rgba(139,92,246,.15), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(59,130,246,.08), transparent 30%),
+        var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, sans-serif;
+    padding: clamp(14px, 4vw, 32px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================
+    APP LAYOUT
+========================= */
+.app-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 4vw, 32px);
+}
+
+/* =========================
+    MAIN DISPLAY
+========================= */
+.main-display {
+    position: relative;
+    background: rgba(15,23,42,.92);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 28px;
+    padding: clamp(24px, 5vw, 44px);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Reloj en la esquina (Modo Vertical por defecto) */
+.live-clock {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    padding: 10px 16px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.05);
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-soft);
+}
+
+/* =========================
+    STATUS & TITLES
+========================= */
+.current-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(34,197,94,.15);
+    color: var(--success);
+    font-size: .8rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    margin-bottom: 22px;
+    align-self: flex-start;
+}
+
+#current-segment-title {
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    margin-bottom: 8px;
+    line-height: 1.2;
+    max-width: 80%;
+}
+
+#current-segment-host {
+    color: var(--text-soft);
+    margin-bottom: 28px;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+}
+
+/* =========================
+    TIMER
+========================= */
+.big-timer {
+    position: relative; /* Clave para el posicionamiento absoluto de los lados */
+    font-size: clamp(4.5rem, 15vw, 9.5rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.06em;
+    margin-bottom: 24px;
+    font-variant-numeric: tabular-nums;
+    align-self: center;
+}
+
+/* =========================
+    PROGRESS & CONTROLS
+========================= */
+.progress-container {
+    width: 100%;
+    height: 12px;
+    background: rgba(255,255,255,.05);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #8b5cf6, #6366f1);
+    transition: width .5s linear;
+}
+
+.controls-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.controls-row button {
+    flex: 1;
+    min-width: 56px;
+    max-width: 70px;
+    height: 60px;
+    border: none;
+    cursor: pointer;
+    border-radius: 16px;
+    color: white;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.08);
+    transition: var(--transition);
+    font-size: 1.1rem;
+}
+
+.controls-row button:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.1);
+}
+
+/* =========================
+    QUEUE / COLA DE ESPERA
+========================= */
+.queue-section {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+}
+
+.section-title {
+    font-weight: 700;
+    color: var(--text-soft);
+    font-size: 1.1rem;
+    padding-left: 4px;
+}
+
+.timers-list {
+    display: grid;
+    gap: 14px;
+}
+
+.timer-card {
+    background: rgba(17,24,39,.92);
+    border: 1px solid rgba(255,255,255,.05);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: var(--transition);
+}
+
+.timer-card:hover { background: var(--card-hover); }
+.timer-card.active { border-color: var(--accent); box-shadow: 0 0 0 1px rgba(139,92,246,.35); }
+
+.timer-title { font-size: 1.05rem; font-weight: 800; }
+.timer-sub { margin-top: 4px; color: var(--text-soft); font-size: .9rem; }
+
+/* =========================
+    BUTTONS & MODAL
+========================= */
+.edit-btn {
+    height: 42px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: rgba(139,92,246,.15);
+    color: white;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.list-actions { display: flex; justify-content: center; margin-top: 8px; }
+.list-actions button {
+    width: 100%; max-width: 400px; height: 60px; border: none; cursor: pointer;
+    border-radius: 18px; color: white; font-weight: 700; font-size: 1rem;
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+}
+
+.modal {
+    position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+    background: rgba(0,0,0,.7); backdrop-filter: blur(8px); z-index: 1000; padding: 16px;
+}
+.modal.active { display: flex; }
+.modal-content {
+    width: 100%; max-width: 600px; background: #0f172a; border-radius: 24px;
+    padding: clamp(20px, 5vw, 32px); max-height: 90vh; overflow-y: auto;
+}
+#edit-form { display: grid; gap: 16px; }
+input, textarea { width: 100%; background: #0b1220; color: white; border: 1px solid var(--border); border-radius: 14px; padding: 14px; font-family: inherit; }
+textarea { min-height: 100px; resize: vertical; }
+.modal-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+.modal-buttons button { height: 52px; border: none; border-radius: 14px; cursor: pointer; font-weight: 600; }
+.btn-alt { background: #1e293b; color: white; }
+.btn-danger { background: #ef4444; color: white; }
+.btn-save { background: linear-gradient(135deg, #8b5cf6, #6d28d9); color: white; }
+
+/* =========================
+    COLOR PICKER & ALERTS
+========================= */
+#color-options { display: flex; flex-wrap: wrap; gap: 12px; }
+.color-dot { width: 34px; height: 34px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; }
+.color-dot.active { border-color: white; box-shadow: 0 0 0 4px rgba(255,255,255,.08); }
+
+.big-timer.warning { color: var(--warning); animation: pulseWarning 1s infinite; }
+.big-timer.danger { color: var(--danger); animation: pulseDanger .45s infinite; }
+.main-display.warning { box-shadow: 0 0 40px rgba(245,158,11,.25); }
+.main-display.danger { box-shadow: 0 0 60px rgba(239,68,68,.35); }
+
+@keyframes pulseWarning { 0%, 100% { opacity: 1; } 50% { opacity: .6; } }
+@keyframes pulseDanger { 0%, 100% { opacity: 1; } 50% { opacity: .2; } }
+
+/* =========================
+    BRAND & LOGOS
+========================= */
+.app-logo img, .brand-header img { max-width: 100%; height: auto; object-fit: contain; }
+.brand-focus { display: none; }
+
+/* =========================
+    FOCUS MODE (FULLSCREEN)
+========================= */
+.main-display.focus-mode {
+    position: fixed; inset: 0; border-radius: 0; z-index: 999;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    background: #050913; text-align: center; padding: 32px;
+}
+body.focus-active { overflow: hidden; }
+body.focus-active .brand-header { display: none; } 
+
+.main-display.focus-mode .brand-focus { 
+    display: block; position: absolute; top: clamp(20px, 4vw, 40px); right: clamp(24px, 6vw, 56px); z-index: 10; 
+}
+.main-display.focus-mode .brand-focus img { max-height: clamp(45px, 5vw, 75px); width: auto; }
+
+/* =========================
+    MEDIA QUERY: SMARTPHONES (≤ 768px)
+========================= */
+@media (max-width: 768px) {
+    .main-display { padding-top: 75px; }
+    .live-clock { top: 16px; right: 16px; font-size: 0.85rem; padding: 8px 12px; }
+    #current-segment-title { max-width: 100%; }
+    .timer-card { flex-direction: column; align-items: stretch; gap: 14px; text-align: center; }
+    .edit-btn { width: 100%; }
+    .controls-row button { max-width: none; }
+}
+
+/* ============================================================
+    MEDIA QUERY: DETECTA PANTALLAS HORIZONTALES / ESCRITORIO
+============================================================ */
+@media (min-width: 769px) and (orientation: landscape), (min-width: 1024px) {
+
+    /* Alineamos los títulos al centro en horizontal */
+    #current-segment-title, #current-segment-host {
+        text-align: center;
+        align-self: center;
+    }
+    
+    #current-segment-title {
+        max-width: 100%;
+    }
+
+    /* Modificamos el reloj grande para que sirva de eje central */
+    .big-timer {
+        margin: 40px auto;
+        display: inline-block;
+    }
+
+    /* Forzamos al Status Badge a flotar a la IZQUIERDA del reloj */
+    .current-label {
+        position: absolute;
+        top: 50%;
+        left: 40px; /* Separación del borde izquierdo de la tarjeta */
+        transform: translateY(-50%);
+        margin-bottom: 0;
+    }
+
+    /* Forzamos al Live Clock a flotar a la DERECHA del reloj */
+    .live-clock {
+        position: absolute;
+        top: 50%;
+        right: 40px; /* Separación del borde derecho de la tarjeta */
+        transform: translateY(-50%);
+        margin: 0;
+    }
+
+    /* ============================================================
+        COMPORTAMIENTO EXCLUSIVO DEL MODO FOCUS HORIZONTAL
+    ============================================================ */
+    .main-display.focus-mode #current-segment-title {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        margin-bottom: 20px;
+    }
+
+    /* En Focus Mode, como el reloj es gigante, abrimos más los costados */
+    .main-display.focus-mode .current-label {
+        left: clamp(24px, 5vw, 80px);
+        font-size: clamp(1rem, 1.8vw, 1.4rem);
+        padding: 12px 24px;
+    }
+
+    .main-display.focus-mode .live-clock {
+        right: clamp(24px, 5vw, 80px);
+        font-size: clamp(1.2rem, 2.2vw, 2.4rem);
+        padding: 14px 24px;
+        background: rgba(255,255,255,.06);
+    }
+
+    .main-display.focus-mode .big-timer {
+        font-size: clamp(6rem, 20vw, 15rem);
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Dynamic Floor — Registro</title>
+
+<!-- ANTI CACHE -->
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- VERSIONADO CSS -->
+
+<link rel="stylesheet" href="style.css?v=1.0.5">
+
+</head>
+
+<body>
+
+<div class="bg-logo">
+    <span>DF</span>
+</div>
+
+<div class="light one"></div>
+<div class="light two"></div>
+
+<div class="container">
+
+    <div class="panel">
+
+        <!-- REGISTER SCREEN -->
+
+        <div id="registerScreen">
+
+            <!-- LOGO -->
+
+            <div class="logo-wrap">
+
+                <div class="logo-box">
+
+                    <img src="logo.png" alt="Logo">
+
+                </div>
+
+            </div>
+
+            <!-- HEADER -->
+
+            <div class="header">
+
+                <div class="badge">
+                    ● Evento privado por registro
+                </div>
+
+                <h1>dynamic floor</h1>
+
+                <p>
+                    Presenta una experiencia nocturna de música electrónica y encuentro social.
+                </p>
+
+            </div>
+
+            <div class="notice-card">
+
+                <div class="notice-tag">
+                    ● Acceso sujeto a aforo
+                </div>
+
+                <div class="notice-text">
+                    Hemos adaptado la dinámica de acceso para evitar limitar la asistencia debido a inasistencias en registros previos.
+                    <br><br>
+                    El registro funcionará únicamente con fines de control y organización del evento.
+                    <br><br>
+                    El acceso permanecerá disponible hasta alcanzar el límite de aforo permitido.
+                </div>
+
+            </div>
+
+            <!-- INFO -->
+
+            <div class="info-grid">
+
+                <div class="info-card">
+
+                    <div class="info-title purple">
+                        Cover
+                    </div>
+
+                    <div class="info-content">
+                        $50 · Incluye bebida
+                    </div>
+
+                </div>
+
+                <div class="info-card">
+
+                    <div class="info-title orange">
+                        Fecha
+                    </div>
+
+                    <div class="info-content">
+                        12 de Junio 2026
+                    </div>
+
+                </div>
+
+                <div class="info-card">
+
+                    <div class="info-title pink">
+                        Horario
+                    </div>
+
+                    <div class="info-content">
+                        17:00 - 23:00 Hrs
+                    </div>
+
+                </div>
+
+                <div class="info-card">
+
+                    <div class="info-title cyan">
+                        Espacio
+                    </div>
+
+                    <div class="info-content">
+                        Terraza · Evento privado por registro
+                    </div>
+
+                </div>
+
+                <div class="info-card">
+
+                    <div class="info-title green">
+                        Ubicación
+                    </div>
+
+                    <div class="info-content">
+                        Independencia 8 · Zona Centro<br>
+                        36000 Guanajuato, Guanajuato<br>
+
+                        <span style="color:#94A3B8;">
+                            Plaza de San Fernando
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="glow-line"></div>
+
+            <!-- FORM -->
+
+            <form id="customForm">
+
+                <!-- NAME -->
+
+                <div class="form-card">
+
+                    <label class="label">
+                        Nombre / Code Name
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Tu respuesta"
+                        required
+                    >
+
+                </div>
+
+                <!-- ROLE -->
+
+                <div class="form-card" id="roleRadioGroup">
+
+                    <label class="label">
+
+                        Me considero
+                        <span class="required">*</span>
+
+                        <div class="description">
+
+                            • Si eres DJ o selector, podemos brindarte un espacio en los decks para compartir tu selección musical. Te invitamos a llevar tu memoria USB.
+                            <br><br>
+
+                            • Si asistes como audiencia, esperamos que disfrutes la experiencia de la sesión.
+
+                        </div>
+
+                    </label>
+
+                    <div class="radio-group">
+
+                        <label class="radio-item">
+                            <input type="radio" name="role" value="Dj" required>
+                            Dj
+                        </label>
+
+                        <label class="radio-item">
+                            <input type="radio" name="role" value="Selector">
+                            Selector
+                        </label>
+
+                        <label class="radio-item">
+                            <input type="radio" name="role" value="Espectador">
+                            Espectador
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <!-- CONTACT -->
+
+                <div class="form-card">
+
+                    <label class="label">
+                        Información de contacto
+                        (Email, WhatsApp, Instagram, Etc.)
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="contact"
+                        placeholder="Tu respuesta"
+                        required
+                    >
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <button type="submit" class="submit-btn">
+                    Confirmar registro
+                </button>
+
+            </form>
+
+            <div class="footer">
+                Dynamic Floor © 2026
+            </div>
+
+        </div>
+
+        <!-- SUCCESS SCREEN -->
+
+        <div
+            class="success-screen"
+            id="successScreen"
+            style="display:none;"
+        >
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Registro recibido
+            </h2>
+
+            <p>
+                Hemos recibido tu registro correctamente.
+                <br><br>
+                Gracias por formar parte de la experiencia Dynamic Floor.
+                Muy pronto compartiremos más información contigo.
+            </p>
+
+            <!-- <button
+                class="back-btn"
+                onclick="location.reload()"
+            >
+                Volver
+            </button> -->
+
+        </div>
+
+        <!-- LIMIT SCREEN -->
+
+        <div
+            class="success-screen"
+            id="limitScreen"
+            style="display:none;"
+        >
+
+            <div class="success-icon">
+                !
+            </div>
+
+            <h2>
+                Registro cerrado
+            </h2>
+
+            <p>
+                Hemos alcanzado el límite de registros disponibles para esta experiencia.
+                <br><br>
+                Agradecemos tu interés en formar parte de Dynamic Floor.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- VERSIONADO JS -->
+
+<script src="scripts.js?v=1.0.5"></script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>FbF System</title>
+<style></style>
+</head>
+
+<body>
+
+<h2>Comparar Followers y Followings</h2>
+
+
+<div class="controls">
+
+  <label>Followers JSON:</label>
+  <input type="file" id="followersFile" accept=".json">
+
+  <label>Followings JSON:</label>
+  <input type="file" id="followingsFile" accept=".json">
+
+  <button id="startBtn" disabled>
+    Comenzar
+  </button>
+
+  <button id="exportBtn">
+    Exportar progreso
+  </button>
+
+  <input type="file"
+         id="importProgress"
+         accept=".json">
+
+</div>
+
+<!-- <label>Followers JSON:</label>
+<input type="file" id="followersFile" accept=".json">
+
+<label>Followings JSON:</label>
+<input type="file" id="followingsFile" accept=".json">
+
+<br>
+
+<button id="startBtn" disabled>Comenzar</button>
+<button id="exportBtn">Exportar progreso</button>
+
+<input type="file" id="importProgress" accept=".json"> -->
+
+<h3>Usuarios que sigues y NO te siguen</h3>
+
+<div id="current"></div>
+
+<div class="stats" id="progressStats"></div>
+
+<h3>Log</h3>
+
+<pre id="log"></pre>
+
+
+
+</body>
+</html>
