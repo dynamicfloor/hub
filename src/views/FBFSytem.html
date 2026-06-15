@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FbF System</title>
+
+    <link rel="stylesheet" href="../styles/FBFystem.css">
+
+</head>
+
+<body>
+
+    <header class="page-header">
+
+        <h2>
+            F2F Analyzer
+        </h2>
+
+    </header>
+
+    <section class="controls">
+
+        <label for="followersFile">
+            Base JSON
+        </label>
+
+        <input
+            type="file"
+            id="followersFile"
+            accept=".json">
+
+        <label for="followingsFile">
+            Objective JSON
+        </label>
+
+        <input
+            type="file"
+            id="followingsFile"
+            accept=".json">
+
+        <label for="importProgress">
+            Restore Progress
+        </label>
+
+        <input
+            type="file"
+            id="importProgress"
+            accept=".json">
+
+        <label>
+            
+        </label>
+
+        <div class="action-group">
+
+            <button
+                id="startBtn"
+                disabled>
+                Comenzar
+            </button>
+
+            <button
+                id="exportBtn">
+                Export Progress
+            </button>
+
+        </div>
+
+    </section>
+
+    <section class="results-section">
+
+        <h3>
+            Results Found
+        </h3>
+
+        <div id="current"></div>
+
+    </section>
+
+    <section class="stats-section">
+
+        <h3>
+            Stats
+        </h3>
+
+        <div
+            class="stats"
+            id="progressStats">
+        </div>
+
+    </section>
+
+    <section class="log-section">
+
+        <h3>
+            Log 
+        </h3>
+
+        <pre id="log"></pre>
+
+    </section>
+
+    <script src="../scripts/FBFSytemScript.js"></script>
+
+</body>
+
+</html>

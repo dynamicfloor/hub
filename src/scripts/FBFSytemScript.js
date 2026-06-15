@@ -58,8 +58,8 @@ function updateProgressStats(){
   });
 
   progressStats.textContent =
-`Visitados: ${visitedUsers.size}
-Flags Totales: ${totalFlags}
+`Processed: ${visitedUsers.size}
+Flag Count: ${totalFlags}
 
 NF: ${nf}
 NS: ${ns}
@@ -518,8 +518,8 @@ startBtn.onclick=()=>{
   }
 
   logPre.textContent=
-`Followers: ${followersArray.length}
-Followings: ${followingsArray.length}
-No Followers: ${notFollowingBack.length}`;
+`Base: ${followersArray.length}
+Objective: ${followingsArray.length}
+Target: ${notFollowingBack.length}`;
 };
 

@@ -1,0 +1,508 @@
+:root{
+    --bg:#050a30;
+    --bg-soft:#0b1248;
+    --card:rgba(15,27,99,.85);
+    --line:#23339b;
+    --primary:#7C3AED;
+    --primary-soft:#A855F7;
+    --cyan:#22D3EE;
+    --green:#4ADE80;
+    --text:#F8FAFC;
+    --muted:#94A3B8;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(36,56,184,.18) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(124,58,237,.18) 0%,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #050a30 0%,
+            #070d38 100%
+        );
+    position:relative;
+}
+
+/* ==========================
+   BACKGROUND & LIGHTS (Espaciado e Inset fijo del 2do)
+========================== */
+
+.bg-logo{
+    position:fixed;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    pointer-events:none;
+    z-index:0;
+}
+
+.bg-logo span{
+    font-size:18vw;
+    font-weight:800;
+    letter-spacing:16px;
+    color:#ffffff04;
+    transform:rotate(-18deg);
+    user-select:none;
+}
+
+.light{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(120px);
+    z-index:0;
+}
+
+.light.one{
+    width:350px;
+    height:350px;
+    background:#7C3AED33;
+    top:-120px;
+    left:-120px;
+}
+
+.light.two{
+    width:280px;
+    height:280px;
+    background:#22D3EE22;
+    bottom:-100px;
+    right:-100px;
+}
+
+/* ==========================
+   LAYOUT (Estructura centralizada pero espaciosa del 2do)
+========================== */
+
+.container{
+    position:relative;
+    z-index:2;
+    width:100%;
+    padding:40px 20px 80px; /* Margen inferior amplio del 2do */
+}
+
+.panel{
+    width:100%;
+    max-width:1200px; /* El ancho premium de tu landing */
+    margin:0 auto;
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:32px;
+    padding:50px; /* Padding interno generoso y expansivo del 2do */
+    backdrop-filter:blur(24px);
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+/* Contenedor central interno para limitar textos/inputs y que no se rompa la simetría */
+.content-wrapper {
+    max-width: 800px; /* Tamaño ideal intermedio para que respire en pantallas grandes */
+    margin: 0 auto;
+}
+
+/* ==========================
+   LOGO & HEADER (Pesos y tamaños de fuente del 2do)
+========================== */
+
+.logo-wrap{
+    display:flex;
+    justify-content:center;
+    margin-bottom:30px; /* Más aire abajo del logo */
+}
+
+.logo-box{
+    width:220px; /* Tamaño más imponente extraído del entorno responsive del 2do */
+    height:220px;
+    border-radius:32px;
+    background:#050a30cc;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.logo-box img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    padding:14px;
+}
+
+.logo-placeholder{
+    color:#94A3B8;
+    text-align:center;
+    font-size:14px;
+    line-height:1.8;
+    padding:24px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 16px;
+    border-radius:999px;
+    background:#ffffff08;
+    border:1px solid #ffffff10;
+    color:var(--cyan);
+    font-size:13px;
+    margin: 0 auto 24px; /* Centrado con margen inferior limpio */
+}
+
+.header{
+    text-align:center;
+    margin-bottom:40px; /* Despega la cabecera del formulario */
+}
+
+.header h1{
+    font-size:54px; /* Tipografía monumental basada en la landing */
+    line-height:1.05;
+    margin-bottom:24px;
+    font-weight:800;
+}
+
+.header p{
+    color:var(--muted);
+    font-size:16px; /* Texto más grande y legible */
+    line-height:2;  /* Interlineado del 2do css */
+    max-width:650px;
+    margin:0 auto;
+}
+
+/* ==========================
+   FORM CONTROLS (Tarjetas amplias que aprovechan el escritorio)
+========================== */
+
+.form-card{
+    background:#050a3088;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    padding:32px; /* Más espacio interno en los contenedores de inputs */
+    margin-bottom:24px; /* Mayor separación entre bloques */
+}
+
+.label{
+    display:block;
+    margin-bottom:16px;
+    font-size:15px;
+    font-weight:600;
+    color:#E2E8F0;
+    line-height:1.8;
+}
+
+.required{
+    color:#f87171;
+}
+
+.description{
+    margin-top:12px;
+    color:#94A3B8;
+    font-weight:400;
+    line-height:2;
+    font-size:14px;
+}
+
+input[type="text"]{
+    width:100%;
+    background:#050a30;
+    border:1px solid var(--line);
+    border-radius:18px; /* Radio suavizado alineado a los botones del 2do */
+    padding:18px; /* Inputs más altos y elegantes */
+    color:white;
+    outline:none;
+    transition:.25s ease;
+    font-size:15px;
+}
+
+input[type="text"]:focus{
+    border-color:var(--primary-soft);
+    box-shadow:0 0 0 4px #7C3AED22;
+}
+
+/* RADIO GROUP (Layout amplio) */
+.radio-group{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    margin-top:20px;
+}
+
+.radio-item{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:18px 22px; /* Items de selección sustancialmente más espaciosos */
+    border-radius:18px;
+    background:#ffffff05;
+    border:1px solid rgba(255,255,255,.06);
+    cursor:pointer;
+    transition:.25s ease;
+}
+
+.radio-item:hover{
+    background:#ffffff08;
+    transform:translateY(-1px); /* Efecto sutil del segundo CSS */
+}
+
+.radio-item input{
+    width:22px;
+    height:22px;
+    accent-color:#7C3AED;
+}
+
+/* ACTION BUTTONS (Espaciados e interactividad heredados de la landing) */
+.submit-btn,
+.back-btn{
+    width:100%;
+    border:none;
+    border-radius:18px;
+    padding:18px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s ease;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-soft)
+    );
+    color:white;
+    margin-top:14px;
+    box-shadow:0 10px 30px rgba(124,58,237,.35);
+}
+
+.submit-btn:hover,
+.back-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 16px 40px rgba(124,58,237,.45);
+}
+
+/* ==========================
+   INFO GRID (Grilla modular de 2 columnas)
+========================== */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr)); /* Separación en dos columnas reales del 2do */
+    gap:16px;
+    margin-top:50px; /* Mucho más aire en las divisiones */
+    margin-bottom:50px;
+}
+
+.info-grid > .featured{
+    grid-column:1 / -1;
+}
+
+.info-card{
+    background:#ffffff08;
+    border:1px solid #ffffff10;
+    border-radius:22px;
+    padding:24px; /* Mayor padding interior */
+    transition:.25s ease;
+}
+
+.info-card:hover{
+    transform:translateY(-3px);
+    border-color:#ffffff20;
+}
+
+.info-title{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:12px;
+    font-weight:700;
+}
+
+.info-content{
+    color:#E2E8F0;
+    line-height:2; /* El interlineado relajado de la landing */
+}
+
+/* UTILERÍAS DE COLOR */
+.purple{ color:#A855F7; }
+.cyan{ color:#22D3EE; }
+.green{ color:#4ADE80; }
+.orange{ color:#FB923C; }
+.pink{ color:#F472B6; }
+.yellow{ color:#FFFF00; }
+
+/* ==========================
+   DIVIDER (Glow line del 2do con márgenes extendidos)
+========================== */
+
+.glow-line{
+    height:1px;
+    width:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #7C3AED,
+        transparent
+    );
+    margin:50px 0; /* Mayor holgura vertical */
+}
+
+/* ==========================
+   NOTICE CARD
+========================== */
+
+.notice-card{
+    position:relative;
+    padding:26px;
+    border-radius:24px;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.05),
+            rgba(255,255,255,.03)
+        );
+    border:1px solid rgba(251,146,60,.14);
+    overflow:hidden;
+    margin:50px 0;
+}
+
+.notice-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(251,146,60,.12),
+            transparent 40%
+        );
+}
+
+.notice-tag{
+    position:relative;
+    z-index:2;
+    display:inline-flex;
+    padding:8px 14px;
+    margin-bottom:16px;
+    border-radius:999px;
+    background:rgba(251,146,60,.10);
+    border:1px solid rgba(251,146,60,.15);
+    color:#FB923C;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.notice-text{
+    position:relative;
+    z-index:2;
+    color:#CBD5E1;
+    line-height:2;
+}
+
+/* ==========================
+   SUCCESS SCREEN
+========================== */
+
+.success-screen{
+    display:none;
+    text-align:center;
+    padding:60px 20px; /* Más aire para celebrar el éxito */
+}
+
+.success-icon{
+    width:110px;
+    height:110px;
+    margin:0 auto 30px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#7C3AED,#22D3EE);
+    font-size:44px;
+    font-weight:800;
+    box-shadow:0 20px 60px rgba(124,58,237,.35);
+}
+
+.success-screen h2{
+    font-size:42px;
+    margin-bottom:24px;
+    font-weight:800;
+}
+
+.success-screen p{
+    color:#CBD5E1;
+    line-height:2;
+    font-size:16px;
+    max-width:520px;
+    margin:auto;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+.footer{
+    margin-top:70px; /* Despegado completamente de los componentes */
+    padding-top:24px;
+    border-top:1px solid rgba(255,255,255,.08);
+    text-align:center;
+    color:#64748B;
+    font-size:13px;
+}
+
+/* ==========================
+   RESPONSIVE / MEDIA QUERIES
+========================== */
+
+@media(max-width:900px){
+    .panel{
+        padding:32px;
+    }
+
+    .header h1{
+        font-size:42px;
+    }
+}
+
+@media(max-width:640px){
+    .panel{
+        padding:24px;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr; /* Colapsa solo en móviles pequeños */
+    }
+
+    .header h1{
+        font-size:42px;
+    }
+
+    .success-screen h2{
+        font-size:32px;
+    }
+
+    .bg-logo span{
+        font-size:34vw;
+    }
+}
