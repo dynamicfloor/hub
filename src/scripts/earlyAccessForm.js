@@ -215,9 +215,31 @@ form.addEventListener("submit", async (e) => {
 
     const nameVal = document.getElementById("name").value.trim();
     const emailVal = document.getElementById("email").value.trim();
+    const instagramVal = instagramInput.value.trim();
+
+    if (
+        instagramVal &&
+        !/^@[a-zA-Z0-9._]{1,30}$/.test(instagramVal)
+    ) {
+        showErrorModal(
+            "Usuario de Instagram inválido",
+            "Ingresa únicamente tu usuario de Instagram, por ejemplo: @hola. Si no tienes Instagram, puedes dejar este campo en blanco."
+        );
+        return;
+    }
     
     if (!nameVal || !emailVal) {
         showErrorModal("Campos incompletos", "Por favor, ingresa tu Nombre y tu Correo electrónico.");
+        return;
+    }
+
+    const emailInput = document.getElementById("email");
+
+    if (!emailInput.checkValidity()) {
+        showErrorModal(
+            "Correo inválido",
+            "Por favor ingresa un correo válido, ejemplo: hola@gmail.com."
+        );
         return;
     }
 

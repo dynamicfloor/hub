@@ -637,6 +637,122 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     font-size:13px;
 }
 
+
+/* ==========================================================================
+   COMPONENTES DEL BUSCADOR DINÁMICO (CUSTOM SELECT)
+   ========================================================================== */
+
+/* Contenedor relativo para que el menú flotante no se desplace */
+.custom-select-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Menú desplegable flotante (Dropdown) */
+.select-dropdown {
+    position: absolute;
+    top: calc(100% + 6px); /* Pequeña separación del input */
+    left: 0;
+    width: 100%;
+    max-height: 220px;
+    overflow-y: auto;
+    background: #121214; /* Color oscuro base para hacer match con el panel */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    z-index: 100; /* Asegura que flote por encima de las demás cards */
+}
+
+/* Elementos individuales del menú */
+.select-dropdown .dropdown-item {
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #e4e4e7;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Efecto Hover para las opciones */
+.select-dropdown .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+/* Estado cuando no hay resultados */
+.select-dropdown .option-disabled {
+    cursor: default;
+    background: transparent !important;
+}
+
+/* Personalización de la barra de desplazamiento del menú */
+.select-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+.select-dropdown::-webkit-scrollbar-track {
+    background: transparent;
+}
+.select-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+/* ==========================================================================
+   CONTENEDOR DE ETIQUETAS (TAGS)
+   ========================================================================== */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+/* Estilo de cada Tag/Etiqueta seleccionada */
+.tag-item {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    color: #f4f4f5;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeInTag 0.2s ease-out;
+}
+
+/* Botón de eliminar (X) dentro del tag */
+.tag-close {
+    margin-left: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.4);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.tag-close:hover {
+    color: #ef4444; /* Color rojo sutil al querer eliminarlo */
+}
+
+/* Animación de entrada suave para las etiquetas */
+@keyframes fadeInTag {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+
+
 /* ==========================
    RESPONSIVE / MEDIA QUERIES
 ========================== */
