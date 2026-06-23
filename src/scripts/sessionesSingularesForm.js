@@ -60,7 +60,7 @@ function generarRadioPuntualidad() {
     PUNCTUALITY_CONFIG.forEach((opcion, index) => {
         html += `
             <label class="checkbox-item">
-                <input type="radio" name="punctuality_radio" value="${opcion}" ${index === 0 ? 'checked' : ''}> ${opcion}
+                <input type="radio" name="punctuality_radio" value="${opcion}" > ${opcion}
             </label>
         `;
     });
@@ -73,7 +73,7 @@ function generarRadioAsistencia() {
     ATTENDANCE_CONFIG.forEach((opcion, index) => {
         html += `
             <label class="checkbox-item">
-                <input type="radio" name="attendance_radio" value="${opcion}" ${index === 0 ? 'checked' : ''}> ${opcion}
+                <input type="radio" name="attendance_radio" value="${opcion}" > ${opcion}
             </label>
         `;
     });
