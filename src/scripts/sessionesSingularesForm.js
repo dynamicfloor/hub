@@ -1,4 +1,5 @@
-const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSdMYTVmcyAs3si0XKIe6m_3q23x5TGRAShaVG-TeNWNmhZbYQ/formResponse";
+const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSdXL0kxs0k4_5XhOuxsEyxVyvY4oNfY67LLd9X4mlf8Nmx5NQ/formResponse";
+// https://docs.google.com/forms/d/e/1FAIpQLSdXL0kxs0k4_5XhOuxsEyxVyvY4oNfY67LLd9X4mlf8Nmx5NQ/viewform?usp=header
 
 const fields = {
     name: "entry.1784247829",
