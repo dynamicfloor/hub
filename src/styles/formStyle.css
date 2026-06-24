@@ -807,6 +807,19 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     }
 }
 
+/*LISTa*/
+.lista {
+  list-style: none;
+  padding-left: 0;
+}
+
+.lista li::before {
+  content: "•";
+  color: #8f3bd3; /* aquí cambias el color */
+  font-size: 20px;
+  margin-right: 8px;
+}
+
 @media(max-width:640px){
     .panel{
         padding:24px;
