@@ -7,11 +7,10 @@
         "singular-reg": "/experiences/singular/register/",
       };
 
-      const params = new URLSearchParams(window.location.search);
-      const key = params.get("to");
+      const path = window.location.pathname.split("/").pop();
 
-      if (routes[key]) {
-        window.location.replace(routes[key]);
+      if (routes[path]) {
+        window.location.replace(routes[path]);
       } else {
         document.body.innerHTML = "Not found";
       }
