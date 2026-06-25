@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <script>
       const routes = {
-        "s-reg": "/experiences/singular/register/",
+        "sreg": "/experiences/singular/register/",
       };
 
-      // toma el "singular-reg" directamente
+      // toma "sreg" directamente desde ?sreg
       const query = window.location.search.replace("?", "");
 
       if (routes[query]) {
